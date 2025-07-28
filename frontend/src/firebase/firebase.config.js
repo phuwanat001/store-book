@@ -1,6 +1,4 @@
-
 import { initializeApp } from "firebase/app";
-import { get } from "react-hook-form";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -14,4 +12,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(auth);
+
+// Export the auth instance
+export const auth = getAuth(app);

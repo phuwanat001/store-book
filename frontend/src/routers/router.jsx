@@ -9,6 +9,8 @@ import Register from "../components/Register";
 import CartPage from "../pages/books/CartPage";
 import CheckoutPage from "../pages/books/CheckoutPage";
 import SingleBook from "../pages/books/SingleBook";
+import PrivateRoute from "./PrivateRoute";
+import OrderPage from "../pages/books/OrderPage";
 //จำ router = createBrowserRouter
 const router = createBrowserRouter([
   {
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
         },
         {
             path : "/orders",
-            element : <div>Orders</div>
+            element : <PrivateRoute><OrderPage/></PrivateRoute>
         },
         {
             path : "/about",
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/checkout",
-          element:<CheckoutPage/>
+          element: <PrivateRoute><CheckoutPage/></PrivateRoute>
         },
         {
           path : "books/:id",

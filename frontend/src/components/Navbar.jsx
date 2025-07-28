@@ -7,6 +7,7 @@ import { MdFavoriteBorder, MdOutlineShoppingBag } from "react-icons/md";
 
 import avatarImg from "../assets/avatar.png";
 import { useSelector } from "react-redux";
+import { useAuth } from "../context/AuthContext";
 
 const navigation = [
   { nameb: "Dashboard", href: "/dashboard" },
@@ -19,7 +20,10 @@ function Navbar() {
   const [isDropdownOpen, setisDropdownOpen] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  const currentUser = false;
+  const { currentUser, logout } = useAuth();
+  const handleLogOut = () => {
+    logout();
+  };
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6 ">
       <nav className="flex justify-between items-center">
@@ -69,6 +73,11 @@ function Navbar() {
                           </Link>
                         </li>
                       ))}
+                      <li>
+                        <button 
+                        onClick={handleLogOut}
+                        className="block w-full  px-4 py-2 hover:bg-gray-100">Logout</button>
+                      </li>
                     </ul>
                   </div>
                 )}
